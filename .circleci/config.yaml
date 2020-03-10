@@ -49,4 +49,3 @@ build_and_push_image:
           repo: '${MY_APP_PREFIX}'
           tag: '${CIRCLE_SHA1}'
           path: ./
-      - create-pull-request
