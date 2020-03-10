@@ -38,14 +38,15 @@ jobs:
             git push --set-upstream origin update-image-${CIRCLE_SHA1}
             hub pull-request -F $PR_TEMPLATE -m "[image update] application ${CIRCLE_SHA1}"
 
-build_and_push_image:
-    jobs:
-      - aws-ecr/build-and-push-image:
-          # XXXXXXXXXXX.dkr.ecr.<YOUR REGION>.amazonaws.com
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          region: AWS_DEFAULT_REGION
-          repo: '${MY_APP_PREFIX}'
-          tag: '${CIRCLE_SHA1}'
-          path: ./
+workflows:
+  build_and_push_image:
+      jobs:
+        - aws-ecr/build-and-push-image:
+            # XXXXXXXXXXX.dkr.ecr.<YOUR REGION>.amazonaws.com
+            account-url: AWS_ECR_ACCOUNT_URL
+            aws-access-key-id: AWS_ACCESS_KEY_ID
+            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+            region: AWS_DEFAULT_REGION
+            repo: '${MY_APP_PREFIX}'
+            tag: '${CIRCLE_SHA1}'
+            path: ./
