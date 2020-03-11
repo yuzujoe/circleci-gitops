@@ -27,12 +27,11 @@ jobs:
             git config --global user.name ${GITHUB_NAME}
             git config --global user.email ${GITHUB_EMAIL}
             # TODO add git repo
-            git clone https://${GITHUB_NAME}:${GITHUB_TOKEN}@yourrepo
-            # TODO manifest
-            cd app
+            git clone https://${GITHUB_NAME}:${GITHUB_TOKEN}@${MANIFEST_REPO}
+            cd ${MANIFEST_APP_NAME}
             git init
             git checkout -b update-image-${CIRCLE_SHA1}
-            yq -y -i '.images |= map(select(.name=="XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.amazonaws.com").newTag |= "'$CIRCLE_SHA1'")' k8s/overlays/dev/bases/kustomization.yaml
+            yq -y -i '.images |= map(select(.name=="XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.amazonaws.com/sample").newTag |= "'$CIRCLE_SHA1'")' k8s/overlays/dev/bases/kustomization.yaml
             git add .
             git commit -m "update-image-${CIRCLE_SHA1}"
             git push --set-upstream origin update-image-${CIRCLE_SHA1}
@@ -50,3 +49,12 @@ workflows:
             repo: '${MY_APP_PREFIX}'
             tag: '${CIRCLE_SHA1}'
             path: ./
+            filters:
+              branches:
+                only:
+                  - master
+        - create-pull-request:
+            filters:
+              branches:
+                only:
+                  - master
