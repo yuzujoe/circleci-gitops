@@ -27,7 +27,7 @@ jobs:
             git config --global user.name ${GITHUB_NAME}
             git config --global user.email ${GITHUB_EMAIL}
             # TODO add git repo
-            git clone https://${GITHUB_NAME}:${GITHUB_TOKEN}@${MANIFEST_REPO}
+            git clone https://${GITHUB_NAME}:${GITHUB_TOKEN}@github.com:yuzujoe/manifest-gitops.git
             cd ${MANIFEST_APP_NAME}
             git init
             git checkout -b update-image-${CIRCLE_SHA1}
