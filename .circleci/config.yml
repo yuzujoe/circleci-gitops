@@ -49,12 +49,12 @@ workflows:
             repo: '${MY_APP_PREFIX}'
             tag: 'app-a-${CIRCLE_SHA1}'
             path: ./
-            filters:
-              branches:
-                only:
-                  - master
-        - create-pull-request:
-            filters:
-              branches:
-                only:
-                  - master
+            # filters:
+            #   branches:
+            #     only:
+            #       - master
+        # - create-pull-request:
+        #     filters:
+        #       branches:
+        #         only:
+        #           - master
