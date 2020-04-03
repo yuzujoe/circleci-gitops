@@ -47,7 +47,7 @@ workflows:
             aws-secret-access-key: AWS_SECRET_ACCESS_KEY
             region: AWS_DEFAULT_REGION
             repo: '${MY_APP_PREFIX}'
-            tag: '${CIRCLE_SHA1}'
+            tag: 'app-a-${CIRCLE_SHA1}'
             path: ./
             filters:
               branches:
