@@ -13,8 +13,8 @@ func main() {
 		c.JSON(200, "GitOps Like!!")
 	})
 
-	r.GET("/hello", func(c *gin.Context) {
-		c.JSON(200, "Hello World")
+	r.GET("/app-a", func(c *gin.Context) {
+		c.JSON(200, "sample-app-a")
 	})
 
 	log.Fatal(r.Run())
