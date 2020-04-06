@@ -17,5 +17,5 @@ func main() {
 		c.JSON(200, "sample-app-a")
 	})
 
-	log.Fatal(r.Run())
+	log.Fatal(r.Run(":8080"))
 }
