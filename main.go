@@ -9,7 +9,7 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.GET("/hello", func(c *gin.Context) {
+	r.GET("/app-a", func(c *gin.Context) {
 		c.JSON(200, "Hello World")
 	})
 
