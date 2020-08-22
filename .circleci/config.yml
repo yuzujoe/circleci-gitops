@@ -53,8 +53,8 @@ workflows:
               branches:
                 only:
                   - master
-        - create-pull-request:
-            filters:
-              branches:
-                only:
-                  - master
+#        - create-pull-request:
+#            filters:
+#              branches:
+#                only:
+#                  - master
